@@ -8,22 +8,32 @@
 
 /* Begin PBXBuildFile section */
 		1F61A32B2042CA3900FA0456 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F61A32A2042CA3900FA0456 /* AppDelegate.swift */; };
-		1F61A32D2042CA3900FA0456 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F61A32C2042CA3900FA0456 /* ViewController.swift */; };
 		1F61A3302042CA3900FA0456 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 1F61A32E2042CA3900FA0456 /* Main.storyboard */; };
 		1F61A3332042CA3900FA0456 /* CFTPhotoshop.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 1F61A3312042CA3900FA0456 /* CFTPhotoshop.xcdatamodeld */; };
 		1F61A3352042CA3900FA0456 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 1F61A3342042CA3900FA0456 /* Assets.xcassets */; };
 		1F61A3382042CA3900FA0456 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 1F61A3362042CA3900FA0456 /* LaunchScreen.storyboard */; };
+		1F61A3412042CB1700FA0456 /* XibDesignedView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F61A3402042CB1700FA0456 /* XibDesignedView.swift */; };
+		1F61A3432042CCA200FA0456 /* PictureEditorView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1F61A3422042CCA200FA0456 /* PictureEditorView.xib */; };
+		1F61A3452042D07A00FA0456 /* PictureEditorView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F61A3442042D07A00FA0456 /* PictureEditorView.swift */; };
+		1F61A3482042D19200FA0456 /* PictureEditorPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F61A3472042D19200FA0456 /* PictureEditorPresenter.swift */; };
+		1F61A34C2042D55000FA0456 /* PictureEditorViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F61A34A2042D55000FA0456 /* PictureEditorViewController.swift */; };
+		1F61A34D2042D55000FA0456 /* PictureEditorViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1F61A34B2042D55000FA0456 /* PictureEditorViewController.xib */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
 		1F61A3272042CA3900FA0456 /* CFTPhotoshop.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = CFTPhotoshop.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		1F61A32A2042CA3900FA0456 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		1F61A32C2042CA3900FA0456 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		1F61A32F2042CA3900FA0456 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		1F61A3322042CA3900FA0456 /* CFTPhotoshop.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = CFTPhotoshop.xcdatamodel; sourceTree = "<group>"; };
 		1F61A3342042CA3900FA0456 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		1F61A3372042CA3900FA0456 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		1F61A3392042CA3900FA0456 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		1F61A3402042CB1700FA0456 /* XibDesignedView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = XibDesignedView.swift; sourceTree = "<group>"; };
+		1F61A3422042CCA200FA0456 /* PictureEditorView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = PictureEditorView.xib; sourceTree = "<group>"; };
+		1F61A3442042D07A00FA0456 /* PictureEditorView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PictureEditorView.swift; sourceTree = "<group>"; tabWidth = 2; };
+		1F61A3472042D19200FA0456 /* PictureEditorPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PictureEditorPresenter.swift; sourceTree = "<group>"; };
+		1F61A34A2042D55000FA0456 /* PictureEditorViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PictureEditorViewController.swift; sourceTree = "<group>"; };
+		1F61A34B2042D55000FA0456 /* PictureEditorViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = PictureEditorViewController.xib; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -43,7 +53,9 @@
 				1F61A3292042CA3900FA0456 /* CFTPhotoshop */,
 				1F61A3282042CA3900FA0456 /* Products */,
 			);
+			indentWidth = 2;
 			sourceTree = "<group>";
+			tabWidth = 2;
 		};
 		1F61A3282042CA3900FA0456 /* Products */ = {
 			isa = PBXGroup;
@@ -56,8 +68,9 @@
 		1F61A3292042CA3900FA0456 /* CFTPhotoshop */ = {
 			isa = PBXGroup;
 			children = (
+				1F61A3492042D53500FA0456 /* Controllers */,
+				1F61A33F2042CAED00FA0456 /* Views */,
 				1F61A32A2042CA3900FA0456 /* AppDelegate.swift */,
-				1F61A32C2042CA3900FA0456 /* ViewController.swift */,
 				1F61A32E2042CA3900FA0456 /* Main.storyboard */,
 				1F61A3342042CA3900FA0456 /* Assets.xcassets */,
 				1F61A3362042CA3900FA0456 /* LaunchScreen.storyboard */,
@@ -65,6 +78,34 @@
 				1F61A3312042CA3900FA0456 /* CFTPhotoshop.xcdatamodeld */,
 			);
 			path = CFTPhotoshop;
+			sourceTree = "<group>";
+		};
+		1F61A33F2042CAED00FA0456 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				1F61A3402042CB1700FA0456 /* XibDesignedView.swift */,
+				1F61A3462042D13E00FA0456 /* PictureEditorView */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
+		1F61A3462042D13E00FA0456 /* PictureEditorView */ = {
+			isa = PBXGroup;
+			children = (
+				1F61A3422042CCA200FA0456 /* PictureEditorView.xib */,
+				1F61A3442042D07A00FA0456 /* PictureEditorView.swift */,
+				1F61A3472042D19200FA0456 /* PictureEditorPresenter.swift */,
+			);
+			path = PictureEditorView;
+			sourceTree = "<group>";
+		};
+		1F61A3492042D53500FA0456 /* Controllers */ = {
+			isa = PBXGroup;
+			children = (
+				1F61A34A2042D55000FA0456 /* PictureEditorViewController.swift */,
+				1F61A34B2042D55000FA0456 /* PictureEditorViewController.xib */,
+			);
+			path = Controllers;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -126,6 +167,8 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				1F61A3432042CCA200FA0456 /* PictureEditorView.xib in Resources */,
+				1F61A34D2042D55000FA0456 /* PictureEditorViewController.xib in Resources */,
 				1F61A3382042CA3900FA0456 /* LaunchScreen.storyboard in Resources */,
 				1F61A3352042CA3900FA0456 /* Assets.xcassets in Resources */,
 				1F61A3302042CA3900FA0456 /* Main.storyboard in Resources */,
@@ -139,8 +182,11 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				1F61A32D2042CA3900FA0456 /* ViewController.swift in Sources */,
+				1F61A34C2042D55000FA0456 /* PictureEditorViewController.swift in Sources */,
+				1F61A3452042D07A00FA0456 /* PictureEditorView.swift in Sources */,
+				1F61A3412042CB1700FA0456 /* XibDesignedView.swift in Sources */,
 				1F61A3332042CA3900FA0456 /* CFTPhotoshop.xcdatamodeld in Sources */,
+				1F61A3482042D19200FA0456 /* PictureEditorPresenter.swift in Sources */,
 				1F61A32B2042CA3900FA0456 /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
