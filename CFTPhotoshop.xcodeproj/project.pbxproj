@@ -18,6 +18,9 @@
 		1F61A3482042D19200FA0456 /* PictureEditorPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F61A3472042D19200FA0456 /* PictureEditorPresenter.swift */; };
 		1F61A34C2042D55000FA0456 /* PictureEditorViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F61A34A2042D55000FA0456 /* PictureEditorViewController.swift */; };
 		1F61A34D2042D55000FA0456 /* PictureEditorViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1F61A34B2042D55000FA0456 /* PictureEditorViewController.xib */; };
+		1FB542542042ED4000020530 /* PictureEditor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FB542532042ED4000020530 /* PictureEditor.swift */; };
+		1FB542572042FAA000020530 /* Promise.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FB542562042FAA000020530 /* Promise.swift */; };
+		1FB5425A20430A4F00020530 /* Filters.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FB5425920430A4F00020530 /* Filters.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -34,6 +37,9 @@
 		1F61A3472042D19200FA0456 /* PictureEditorPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PictureEditorPresenter.swift; sourceTree = "<group>"; };
 		1F61A34A2042D55000FA0456 /* PictureEditorViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PictureEditorViewController.swift; sourceTree = "<group>"; };
 		1F61A34B2042D55000FA0456 /* PictureEditorViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = PictureEditorViewController.xib; sourceTree = "<group>"; };
+		1FB542532042ED4000020530 /* PictureEditor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PictureEditor.swift; sourceTree = "<group>"; };
+		1FB542562042FAA000020530 /* Promise.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Promise.swift; sourceTree = "<group>"; };
+		1FB5425920430A4F00020530 /* Filters.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Filters.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -68,6 +74,8 @@
 		1F61A3292042CA3900FA0456 /* CFTPhotoshop */ = {
 			isa = PBXGroup;
 			children = (
+				1FB542552042FA9000020530 /* Shared */,
+				1FB542522042ED2A00020530 /* Service */,
 				1F61A3492042D53500FA0456 /* Controllers */,
 				1F61A33F2042CAED00FA0456 /* Views */,
 				1F61A32A2042CA3900FA0456 /* AppDelegate.swift */,
@@ -106,6 +114,23 @@
 				1F61A34B2042D55000FA0456 /* PictureEditorViewController.xib */,
 			);
 			path = Controllers;
+			sourceTree = "<group>";
+		};
+		1FB542522042ED2A00020530 /* Service */ = {
+			isa = PBXGroup;
+			children = (
+				1FB542532042ED4000020530 /* PictureEditor.swift */,
+			);
+			path = Service;
+			sourceTree = "<group>";
+		};
+		1FB542552042FA9000020530 /* Shared */ = {
+			isa = PBXGroup;
+			children = (
+				1FB542562042FAA000020530 /* Promise.swift */,
+				1FB5425920430A4F00020530 /* Filters.swift */,
+			);
+			path = Shared;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -186,8 +211,11 @@
 				1F61A3452042D07A00FA0456 /* PictureEditorView.swift in Sources */,
 				1F61A3412042CB1700FA0456 /* XibDesignedView.swift in Sources */,
 				1F61A3332042CA3900FA0456 /* CFTPhotoshop.xcdatamodeld in Sources */,
+				1FB542542042ED4000020530 /* PictureEditor.swift in Sources */,
 				1F61A3482042D19200FA0456 /* PictureEditorPresenter.swift in Sources */,
+				1FB5425A20430A4F00020530 /* Filters.swift in Sources */,
 				1F61A32B2042CA3900FA0456 /* AppDelegate.swift in Sources */,
+				1FB542572042FAA000020530 /* Promise.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
