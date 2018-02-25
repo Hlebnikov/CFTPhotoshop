@@ -24,35 +24,31 @@ class PictureEditorView: XibDesignedView, PictureEditorViewProtocol {
     return "PictureEditorView"
   }
   
-  override func awakeFromNib() {
-    super.awakeFromNib()
-    let tapGesture = UITapGestureRecognizer(target: self, action: #selector(onAddImage))
-    imagePlace.addGestureRecognizer(tapGesture)
-  }
-  
   var image: UIImage? {
     didSet {
       imagePlace.image = image
+      openImageButton.isHidden = image != nil
     }
   }
   
-    func setPresenter(_ presenter: PictureEditorPresenterProtocol) {
-    self.presenter = presenter
-  }
-  
-  @IBAction func onReflect(_ sender: Any) {
+  @IBAction private func onReflect(_ sender: Any) {
     presenter?.reflect()
   }
   
-  @IBAction func onRotate(_ sender: Any) {
+  @IBAction private func onRotate(_ sender: Any) {
     presenter?.rotate()
   }
   
-  @IBAction func onDesaturate(_ sender: Any) {
+  @IBAction private func onDesaturate(_ sender: Any) {
     presenter?.desaturate()
   }
   
-  @IBAction func onAddImage() {
+  @IBAction private func onAddImage() {
     presenter?.getPicture()
   }
+  
+  func setPresenter(_ presenter: PictureEditorPresenterProtocol) {
+    self.presenter = presenter
+  }
+  
 }

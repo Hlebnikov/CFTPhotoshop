@@ -27,9 +27,13 @@
                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="aAD-I6-ya1">
                             <rect key="frame" x="0.0" y="0.0" width="217.5" height="130"/>
                             <subviews>
-                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="7Yb-tG-1co">
+                                <imageView contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="7Yb-tG-1co">
                                     <rect key="frame" x="8" y="8" width="210" height="114"/>
                                     <color key="backgroundColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
+                                    <gestureRecognizers/>
+                                    <connections>
+                                        <outletCollection property="gestureRecognizers" destination="yCa-Gw-vRe" appends="YES" id="chc-jF-KbJ"/>
+                                    </connections>
                                 </imageView>
                                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Qnx-IK-kQQ">
                                     <rect key="frame" x="66.5" y="50" width="83" height="30"/>
@@ -90,7 +94,12 @@
             </constraints>
             <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
             <viewLayoutGuide key="safeArea" id="vUN-kp-3ea"/>
-            <point key="canvasLocation" x="63.5" y="-214"/>
+            <point key="canvasLocation" x="-154" y="-214"/>
         </view>
+        <tapGestureRecognizer id="yCa-Gw-vRe">
+            <connections>
+                <action selector="onAddImage" destination="-1" id="6Ny-Ky-TCL"/>
+            </connections>
+        </tapGestureRecognizer>
     </objects>
 </document>
