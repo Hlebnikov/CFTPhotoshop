@@ -7,6 +7,10 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		1F0730592043305500D899C3 /* HistoryView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1F0730582043305500D899C3 /* HistoryView.xib */; };
+		1F07305B2043306800D899C3 /* HistoryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F07305A2043306800D899C3 /* HistoryView.swift */; };
+		1F07305E2043317A00D899C3 /* HistoryTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F07305C2043317A00D899C3 /* HistoryTableViewCell.swift */; };
+		1F07305F2043317A00D899C3 /* HistoryTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1F07305D2043317A00D899C3 /* HistoryTableViewCell.xib */; };
 		1F61A32B2042CA3900FA0456 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F61A32A2042CA3900FA0456 /* AppDelegate.swift */; };
 		1F61A3302042CA3900FA0456 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 1F61A32E2042CA3900FA0456 /* Main.storyboard */; };
 		1F61A3332042CA3900FA0456 /* CFTPhotoshop.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 1F61A3312042CA3900FA0456 /* CFTPhotoshop.xcdatamodeld */; };
@@ -21,9 +25,15 @@
 		1FB542542042ED4000020530 /* PictureEditor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FB542532042ED4000020530 /* PictureEditor.swift */; };
 		1FB542572042FAA000020530 /* Promise.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FB542562042FAA000020530 /* Promise.swift */; };
 		1FB5425A20430A4F00020530 /* Filters.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FB5425920430A4F00020530 /* Filters.swift */; };
+		1FCC859A2045988600EF13F9 /* HistoryKeeper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FCC85992045988600EF13F9 /* HistoryKeeper.swift */; };
+		1FCC859C20459B2E00EF13F9 /* CoreDataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FCC859B20459B2E00EF13F9 /* CoreDataManager.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		1F0730582043305500D899C3 /* HistoryView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = HistoryView.xib; sourceTree = "<group>"; };
+		1F07305A2043306800D899C3 /* HistoryView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HistoryView.swift; sourceTree = "<group>"; };
+		1F07305C2043317A00D899C3 /* HistoryTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HistoryTableViewCell.swift; sourceTree = "<group>"; };
+		1F07305D2043317A00D899C3 /* HistoryTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = HistoryTableViewCell.xib; sourceTree = "<group>"; };
 		1F61A3272042CA3900FA0456 /* CFTPhotoshop.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = CFTPhotoshop.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		1F61A32A2042CA3900FA0456 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		1F61A32F2042CA3900FA0456 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -40,6 +50,8 @@
 		1FB542532042ED4000020530 /* PictureEditor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PictureEditor.swift; sourceTree = "<group>"; };
 		1FB542562042FAA000020530 /* Promise.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Promise.swift; sourceTree = "<group>"; };
 		1FB5425920430A4F00020530 /* Filters.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Filters.swift; sourceTree = "<group>"; };
+		1FCC85992045988600EF13F9 /* HistoryKeeper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HistoryKeeper.swift; sourceTree = "<group>"; };
+		1FCC859B20459B2E00EF13F9 /* CoreDataManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreDataManager.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -53,6 +65,17 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		1F0730572043302F00D899C3 /* HistoryView */ = {
+			isa = PBXGroup;
+			children = (
+				1F07305A2043306800D899C3 /* HistoryView.swift */,
+				1F0730582043305500D899C3 /* HistoryView.xib */,
+				1F07305C2043317A00D899C3 /* HistoryTableViewCell.swift */,
+				1F07305D2043317A00D899C3 /* HistoryTableViewCell.xib */,
+			);
+			path = HistoryView;
+			sourceTree = "<group>";
+		};
 		1F61A31E2042CA3900FA0456 = {
 			isa = PBXGroup;
 			children = (
@@ -91,6 +114,7 @@
 		1F61A33F2042CAED00FA0456 /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				1F0730572043302F00D899C3 /* HistoryView */,
 				1F61A3402042CB1700FA0456 /* XibDesignedView.swift */,
 				1F61A3462042D13E00FA0456 /* PictureEditorView */,
 			);
@@ -120,6 +144,7 @@
 			isa = PBXGroup;
 			children = (
 				1FB542532042ED4000020530 /* PictureEditor.swift */,
+				1FCC85992045988600EF13F9 /* HistoryKeeper.swift */,
 			);
 			path = Service;
 			sourceTree = "<group>";
@@ -129,6 +154,7 @@
 			children = (
 				1FB542562042FAA000020530 /* Promise.swift */,
 				1FB5425920430A4F00020530 /* Filters.swift */,
+				1FCC859B20459B2E00EF13F9 /* CoreDataManager.swift */,
 			);
 			path = Shared;
 			sourceTree = "<group>";
@@ -192,9 +218,11 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				1F07305F2043317A00D899C3 /* HistoryTableViewCell.xib in Resources */,
 				1F61A3432042CCA200FA0456 /* PictureEditorView.xib in Resources */,
 				1F61A34D2042D55000FA0456 /* PictureEditorViewController.xib in Resources */,
 				1F61A3382042CA3900FA0456 /* LaunchScreen.storyboard in Resources */,
+				1F0730592043305500D899C3 /* HistoryView.xib in Resources */,
 				1F61A3352042CA3900FA0456 /* Assets.xcassets in Resources */,
 				1F61A3302042CA3900FA0456 /* Main.storyboard in Resources */,
 			);
@@ -211,10 +239,14 @@
 				1F61A3452042D07A00FA0456 /* PictureEditorView.swift in Sources */,
 				1F61A3412042CB1700FA0456 /* XibDesignedView.swift in Sources */,
 				1F61A3332042CA3900FA0456 /* CFTPhotoshop.xcdatamodeld in Sources */,
+				1FCC859A2045988600EF13F9 /* HistoryKeeper.swift in Sources */,
 				1FB542542042ED4000020530 /* PictureEditor.swift in Sources */,
 				1F61A3482042D19200FA0456 /* PictureEditorPresenter.swift in Sources */,
+				1FCC859C20459B2E00EF13F9 /* CoreDataManager.swift in Sources */,
 				1FB5425A20430A4F00020530 /* Filters.swift in Sources */,
+				1F07305B2043306800D899C3 /* HistoryView.swift in Sources */,
 				1F61A32B2042CA3900FA0456 /* AppDelegate.swift in Sources */,
+				1F07305E2043317A00D899C3 /* HistoryTableViewCell.swift in Sources */,
 				1FB542572042FAA000020530 /* Promise.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

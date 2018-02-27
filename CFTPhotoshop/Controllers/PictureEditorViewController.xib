@@ -12,6 +12,7 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="PictureEditorViewController" customModule="CFTPhotoshop" customModuleProvider="target">
             <connections>
+                <outlet property="historyView" destination="X7U-6z-jO5" id="az6-DQ-iTe"/>
                 <outlet property="pictureEditorView" destination="gZk-qt-NFl" id="KW6-dT-9zp"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
             </connections>
@@ -29,17 +30,21 @@
                         <constraint firstAttribute="height" constant="204" id="BB4-it-rtI"/>
                     </constraints>
                 </view>
-                <tableView clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" alwaysBounceVertical="YES" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="Bzi-ng-59I">
-                    <rect key="frame" x="0.0" y="212" width="375" height="455"/>
-                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                    <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                </tableView>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="X7U-6z-jO5" customClass="HistoryView" customModule="CFTPhotoshop" customModuleProvider="target">
+                    <rect key="frame" x="0.0" y="206" width="375" height="461"/>
+                    <color key="backgroundColor" red="0.29703073079999998" green="0.35334932219999998" blue="0.40781933069999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                    <color key="tintColor" red="0.94117647059999998" green="0.93725490199999995" blue="0.96078431369999995" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                </view>
             </subviews>
-            <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+            <color key="backgroundColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
             <constraints>
                 <constraint firstItem="gZk-qt-NFl" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" id="7xu-NA-HL0"/>
                 <constraint firstItem="gZk-qt-NFl" firstAttribute="trailing" secondItem="fnl-2z-Ty3" secondAttribute="trailing" id="Hv0-3h-Pcz"/>
+                <constraint firstItem="X7U-6z-jO5" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" id="Ljc-Gx-bMt"/>
+                <constraint firstItem="X7U-6z-jO5" firstAttribute="bottom" secondItem="fnl-2z-Ty3" secondAttribute="bottom" id="W96-hg-QPr"/>
                 <constraint firstItem="gZk-qt-NFl" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" id="khY-XT-3AC"/>
+                <constraint firstItem="X7U-6z-jO5" firstAttribute="trailing" secondItem="fnl-2z-Ty3" secondAttribute="trailing" id="wk4-D0-1jf"/>
+                <constraint firstItem="X7U-6z-jO5" firstAttribute="top" secondItem="gZk-qt-NFl" secondAttribute="bottom" constant="2" id="yTp-Qh-2JO"/>
             </constraints>
             <viewLayoutGuide key="safeArea" id="fnl-2z-Ty3"/>
             <point key="canvasLocation" x="-118.5" y="20.5"/>

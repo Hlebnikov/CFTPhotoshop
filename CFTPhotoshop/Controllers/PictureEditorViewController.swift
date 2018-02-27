@@ -10,7 +10,7 @@ import UIKit
 
 class PictureEditorViewController: UIViewController {
   @IBOutlet weak var pictureEditorView: PictureEditorView!
-//  @IBOutlet weak var historyView: HistoryView!
+  @IBOutlet weak var historyView: HistoryView!
   
   private var originalImage: UIImage? {
     didSet {
@@ -22,6 +22,7 @@ class PictureEditorViewController: UIViewController {
   
   override func viewDidLoad() {
     pictureEditorView.setPresenter(self)
+    historyView.hisoryKeeper = HistoryKeeper()
     imagePicker.delegate = self
   }
 }
@@ -61,15 +62,8 @@ extension PictureEditorViewController: PictureEditorPresenterProtocol {
       return
     }
     
-    pictureEditor.applyFilter(type: type, forImage: image)
-      .onProgress { (progress) in
-        print("Progress \(progress)")
-      }
-      .onComplete { (image) in
-        DispatchQueue.main.async {
-          self.originalImage = image
-        }
-    }
+    self.historyView.addRecord(image: pictureEditor.applyFilter(type: type, forImage: image),
+                               filterName: type.name)
   }
 }
 
