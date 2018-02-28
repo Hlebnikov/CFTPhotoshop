@@ -24,6 +24,7 @@ class PictureEditorViewController: UIViewController {
   override func viewDidLoad() {
     pictureEditorView.setPresenter(self)
     historyView.hisoryKeeper = HistoryKeeper()
+    historyView.delegate = self
     imagePicker.delegate = self
   }
 }
@@ -105,5 +106,22 @@ extension PictureEditorViewController: UIImagePickerControllerDelegate, UINaviga
     }
     
     dismiss(animated: true, completion: nil)
+  }
+}
+
+extension PictureEditorViewController: HistoryViewDelegate {
+  func historyView(_ hisoryView: HistoryView, didSelectImage image: UIImage) {
+    let alertController = UIAlertController(title: nil, message: nil, preferredStyle: .actionSheet)
+    let editAction = UIAlertAction(title: "Edit", style: .default, handler: { _ in self.originalImage = image })
+    let saveAction = UIAlertAction(title: "Save to Photo Album", style: .default) { _ in
+      
+    }
+    let cancelAction = UIAlertAction(title: "Cancel", style: .cancel, handler: nil)
+    
+    alertController.addAction(editAction)
+    alertController.addAction(saveAction)
+    alertController.addAction(cancelAction)
+    
+    present(alertController, animated: true, completion: nil)
   }
 }

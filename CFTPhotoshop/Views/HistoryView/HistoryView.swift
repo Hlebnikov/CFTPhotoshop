@@ -8,6 +8,11 @@
 
 import UIKit
 
+protocol HistoryViewDelegate: class {
+  func historyView(_ hisoryView: HistoryView, didSelectImage image: UIImage)
+}
+
+
 class HistoryView: XibDesignedView {
   @IBOutlet private weak var historyTable: UITableView!
   
@@ -16,6 +21,8 @@ class HistoryView: XibDesignedView {
   override var xibName: String {
     return "HistoryView"
   }
+  
+  weak var delegate: HistoryViewDelegate?
   
   var hisoryKeeper: HistoryKeeper? {
     didSet {
@@ -33,6 +40,7 @@ class HistoryView: XibDesignedView {
     super.awakeFromNib()
     historyTable.register(UINib(nibName: HistoryTableViewCell.xibName, bundle: nil), forCellReuseIdentifier: HistoryTableViewCell.xibName)
     historyTable.dataSource = self
+    historyTable.delegate = self
     historyTable.reloadData()
   }
   
@@ -65,5 +73,19 @@ extension HistoryView: UITableViewDataSource {
     let cell = tableView.dequeueReusableCell(withIdentifier: HistoryTableViewCell.xibName, for: indexPath) as? HistoryTableViewCell
     cell?.set(state: cellStates[cellStates.count - indexPath.row - 1])
     return cell ?? UITableViewCell()
+  }
+}
+
+extension HistoryView: UITableViewDelegate {
+  func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+    tableView.deselectRow(at: indexPath, animated: false)
+    
+    let cellState = cellStates[cellStates.count - indexPath.row - 1]
+    switch cellState {
+    case .show(image: let image, filterName: _):
+      self.delegate?.historyView(self, didSelectImage: image)
+    default:
+      break
+    }
   }
 }
