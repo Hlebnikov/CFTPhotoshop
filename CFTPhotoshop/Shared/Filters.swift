@@ -17,9 +17,18 @@ class RotateFilter: Filter {
   var name: String = "rotate"
   
   func process(image: UIImage) -> Promise<UIImage> {
-    return Promise() { _, result in
+    return Promise() { progress, result in
       DispatchQueue.global(qos: .userInteractive).async {
-        result(self.rotateImage(image) ?? image)
+        
+        (1...98).forEach({ (tic) in
+          DispatchQueue.global().asyncAfter(deadline: .now() + Double(tic) * 0.1, execute: {
+            progress(Float(tic) / 100)
+          })
+        })
+
+        DispatchQueue.global().asyncAfter(deadline: .now() + 10.1, execute: {
+          result(self.rotateImage(image) ?? image)
+        })
       }
     }
   }
@@ -49,19 +58,38 @@ class DesaturateFilter: Filter {
   var name: String = "desaturate"
   
   func process(image: UIImage) -> Promise<UIImage> {
-    return Promise() { _, result in
+    return Promise() { progress, result in
+      var newimage = image
       DispatchQueue.global(qos: .userInteractive).async {
-        let ciContext = CIContext(options: nil)
-        let coreImage = CIImage(image: image)
-        let filter = CIFilter(name: "CIPhotoEffectNoir" )
-        filter!.setDefaults()
-        filter!.setValue(coreImage, forKey: kCIInputImageKey)
-        let filteredImageData = filter!.value(forKey: kCIOutputImageKey) as! CIImage
-        let filteredImageRef = ciContext.createCGImage(filteredImageData, from: filteredImageData.extent)
-        let resultImage = UIImage(cgImage: filteredImageRef!)
-        result(resultImage)
+        newimage = self.desaturate(image: image) ?? image
       }
+      
+      (1...3).forEach({ (tic) in
+        DispatchQueue.global().asyncAfter(deadline: .now() + Double(tic) * 0.2, execute: {
+          progress((100 - 100/Float(tic)) / 100)
+        })
+      })
+      
+      DispatchQueue.global().asyncAfter(deadline: .now() + 0.7, execute: {
+        progress(1)
+        result(image)
+      })
+
     }
+  }
+  
+  private func desaturate(image: UIImage) -> UIImage? {
+    let ciContext = CIContext(options: nil)
+    let coreImage = CIImage(image: image)
+    let filter = CIFilter(name: "CIPhotoEffectNoir" )
+    filter?.setDefaults()
+    filter?.setValue(coreImage, forKey: kCIInputImageKey)
+    if let filteredImageData = filter?.value(forKey: kCIOutputImageKey) as? CIImage {
+      let filteredImageRef = ciContext.createCGImage(filteredImageData, from: filteredImageData.extent)
+      let resultImage = UIImage(cgImage: filteredImageRef!)
+      return resultImage
+    }
+    return nil
   }
 }
 

@@ -11,13 +11,20 @@ import UIKit
 class HistoryTableViewCell: UITableViewCell {
   static let xibName = "HistoryTableViewCell"
   
-  @IBOutlet private weak var loader: UIActivityIndicatorView!
+  @IBOutlet var progressViews: [UIProgressView]!
+    
   @IBOutlet private weak var pictureImageView: UIImageView!
   @IBOutlet private weak var filterNameLabel: UILabel!
   @IBOutlet private weak var filterTitleLabel: UILabel!
   
+  private var loadingProgress: Float = 0.0 {
+    didSet {
+      progressViews.forEach({ $0.setProgress(loadingProgress, animated: true) })
+    }
+  }
+  
   enum State {
-    case loading(progress: Int)
+    case loading(progress: Float)
     case show(image: UIImage, filterName: String)
   }
   
@@ -29,15 +36,14 @@ class HistoryTableViewCell: UITableViewCell {
   
   func set(state: State) {
     switch state {
-    case .loading:
-      if !loader.isAnimating {
-        loader.startAnimating()
-        pictureImageView.isHidden = true
-        filterNameLabel.isHidden = true
-        filterTitleLabel.isHidden = true
-      }
+    case .loading(progress: let progress):
+      progressViews.forEach({ $0.isHidden = false })
+      loadingProgress = progress
+      pictureImageView.isHidden = true
+      filterNameLabel.isHidden = true
+      filterTitleLabel.isHidden = true
     case .show(image: let image, filterName: let filterName):
-      loader.stopAnimating()
+      progressViews.forEach({ $0.isHidden = true })
       self.pictureImageView.image = image
       self.filterNameLabel.text = filterName
       pictureImageView.isHidden = false

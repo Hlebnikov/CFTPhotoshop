@@ -47,19 +47,28 @@ class HistoryView: XibDesignedView {
   func addRecord(image: Promise<UIImage>, filterName: String) {
     cellStates += [.loading(progress: 0)]
     let index = cellStates.count - 1
-    image.onComplete {[unowned self] (image) in
-      var editResult = EditResult(id: nil, image: image, filterName: filterName)
-      do {
-        try self.hisoryKeeper?.save(object: &editResult)
-      } catch {
-        assertionFailure()
-        print("Result hasn't been saved")
-      }
-      self.cellStates[index] = .show(image: image, filterName: filterName)
-      DispatchQueue.main.async {
-        self.historyTable.reloadData()
-      }
+    
+    image
+      .onProgress({ (progress) in
+        self.cellStates[index] = .loading(progress: progress)
+        DispatchQueue.main.async {
+          self.historyTable.reloadData()
+        }
+      })
+      .onComplete {[unowned self] (image) in
+        var editResult = EditResult(id: nil, image: image, filterName: filterName)
+        do {
+          try self.hisoryKeeper?.save(object: &editResult)
+        } catch {
+          assertionFailure()
+          print("Result hasn't been saved")
+        }
+        self.cellStates[index] = .show(image: image, filterName: filterName)
+        DispatchQueue.main.async {
+          self.historyTable.reloadData()
+        }
     }
+    
     historyTable.reloadData()
   }
 }
