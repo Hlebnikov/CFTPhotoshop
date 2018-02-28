@@ -114,7 +114,7 @@ extension PictureEditorViewController: HistoryViewDelegate {
     let alertController = UIAlertController(title: nil, message: nil, preferredStyle: .actionSheet)
     let editAction = UIAlertAction(title: "Edit", style: .default, handler: { _ in self.originalImage = image })
     let saveAction = UIAlertAction(title: "Save to Photo Album", style: .default) { _ in
-      
+      UIImageWriteToSavedPhotosAlbum(image, nil, nil, nil)
     }
     let cancelAction = UIAlertAction(title: "Cancel", style: .cancel, handler: nil)
     
