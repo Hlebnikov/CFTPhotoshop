@@ -25,6 +25,7 @@
 		1FB542542042ED4000020530 /* PictureEditor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FB542532042ED4000020530 /* PictureEditor.swift */; };
 		1FB542572042FAA000020530 /* Promise.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FB542562042FAA000020530 /* Promise.swift */; };
 		1FB5425A20430A4F00020530 /* Filters.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FB5425920430A4F00020530 /* Filters.swift */; };
+		1FB942DC2047058200999F73 /* PictureLoader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FB942DB2047058200999F73 /* PictureLoader.swift */; };
 		1FCC859A2045988600EF13F9 /* HistoryKeeper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FCC85992045988600EF13F9 /* HistoryKeeper.swift */; };
 		1FCC859C20459B2E00EF13F9 /* CoreDataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FCC859B20459B2E00EF13F9 /* CoreDataManager.swift */; };
 /* End PBXBuildFile section */
@@ -50,6 +51,7 @@
 		1FB542532042ED4000020530 /* PictureEditor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PictureEditor.swift; sourceTree = "<group>"; };
 		1FB542562042FAA000020530 /* Promise.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Promise.swift; sourceTree = "<group>"; };
 		1FB5425920430A4F00020530 /* Filters.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Filters.swift; sourceTree = "<group>"; };
+		1FB942DB2047058200999F73 /* PictureLoader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PictureLoader.swift; sourceTree = "<group>"; };
 		1FCC85992045988600EF13F9 /* HistoryKeeper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HistoryKeeper.swift; sourceTree = "<group>"; };
 		1FCC859B20459B2E00EF13F9 /* CoreDataManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreDataManager.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -145,6 +147,7 @@
 			children = (
 				1FB542532042ED4000020530 /* PictureEditor.swift */,
 				1FCC85992045988600EF13F9 /* HistoryKeeper.swift */,
+				1FB942DB2047058200999F73 /* PictureLoader.swift */,
 			);
 			path = Service;
 			sourceTree = "<group>";
@@ -248,6 +251,7 @@
 				1F61A32B2042CA3900FA0456 /* AppDelegate.swift in Sources */,
 				1F07305E2043317A00D899C3 /* HistoryTableViewCell.swift in Sources */,
 				1FB542572042FAA000020530 /* Promise.swift in Sources */,
+				1FB942DC2047058200999F73 /* PictureLoader.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

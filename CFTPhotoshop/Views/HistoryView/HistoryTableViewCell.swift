@@ -29,7 +29,7 @@ class HistoryTableViewCell: UITableViewCell {
   
   func set(state: State) {
     switch state {
-    case .loading(progress: let _):
+    case .loading:
       if !loader.isAnimating {
         loader.startAnimating()
         pictureImageView.isHidden = true

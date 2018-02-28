@@ -19,6 +19,7 @@ class PictureEditorViewController: UIViewController {
   }
   private let imagePicker = UIImagePickerController()
   private let pictureEditor = PictureEditor()
+  private let pictureLoader = PictureLoader()
   
   override func viewDidLoad() {
     pictureEditorView.setPresenter(self)
@@ -38,9 +39,24 @@ extension PictureEditorViewController: PictureEditorPresenterProtocol {
       self.imagePicker.sourceType = .camera
       self.present(self.imagePicker, animated: true, completion: nil)
     }
+    let downloadAction = UIAlertAction(title: "Download", style: .default) { [unowned self] _ in
+      self.showDownloadAlert(withComplition: { (urlString) in
+        self.pictureLoader
+          .loadPicture(byUrl: urlString)
+          .onComplete({ (image) in
+            DispatchQueue.main.async {
+              self.originalImage = image
+            }
+        })
+      })
+    }
+    
+    let cancel = UIAlertAction(title: "Cancel", style: .cancel, handler: nil)
     imagePicker.allowsEditing = false
     alertController.addAction(photoLibraryAction)
     alertController.addAction(cameraAction)
+    alertController.addAction(downloadAction)
+    alertController.addAction(cancel)
     present(alertController, animated: true, completion: nil)
   }
   
@@ -64,6 +80,21 @@ extension PictureEditorViewController: PictureEditorPresenterProtocol {
     
     self.historyView.addRecord(image: pictureEditor.applyFilter(type: type, forImage: image),
                                filterName: type.name)
+  }
+  
+  private func showDownloadAlert(withComplition complition: @escaping (String) -> Void) {
+    let alert = UIAlertController(title: "Paste url string", message: nil, preferredStyle: .alert)
+    
+    alert.addTextField { (textField) in
+      textField.text = "https://i1.wp.com/chartcons.com/wp-content/uploads/Funny-Cat-Jokes2.jpg?resize=1021%2C576&ssl=1"
+    }
+    
+    alert.addAction(UIAlertAction(title: "OK", style: .default, handler: { [unowned alert] (_) in
+      let textField = alert.textFields!.first! // Force unwrapping because we know it exists.
+      complition(textField.text ?? "")
+    }))
+    
+    present(alert, animated: true, completion: nil)
   }
 }
 
