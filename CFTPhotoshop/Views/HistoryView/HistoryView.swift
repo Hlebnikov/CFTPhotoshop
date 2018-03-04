@@ -16,7 +16,7 @@ protocol HistoryViewDelegate: class {
 class HistoryView: XibDesignedView {
   @IBOutlet private weak var historyTable: UITableView!
   
-  private var cellStates: [HistoryTableViewCell.State] = []
+  private var cellPresenters: [HistoryTableCellPresenter] = []
   
   override var xibName: String {
     return "HistoryView"
@@ -28,7 +28,11 @@ class HistoryView: XibDesignedView {
     didSet {
       do {
         let history = try hisoryKeeper?.getAllObjects()
-        cellStates = history?.map({ HistoryTableViewCell.State.show(image: $0.image, filterName: $0.filterName) }) ?? []
+        cellPresenters = history?.map({ historyRecord in
+          let presenter = HistoryTableCellPresenter()
+          presenter.state = HistoryTableViewCell.State.show(image: historyRecord.image, filterName: historyRecord.filterName)
+          return presenter
+        }) ?? []
       } catch {
         assertionFailure()
         return
@@ -45,29 +49,9 @@ class HistoryView: XibDesignedView {
   }
   
   func addRecord(image: Promise<UIImage>, filterName: String) {
-    cellStates += [.loading(progress: 0)]
-    let index = cellStates.count - 1
-    
-    image
-      .onProgress({ (progress) in
-        self.cellStates[index] = .loading(progress: progress)
-        DispatchQueue.main.async {
-          self.historyTable.reloadData()
-        }
-      })
-      .onComplete {[unowned self] (image) in
-        var editResult = EditResult(id: nil, image: image, filterName: filterName)
-        do {
-          try self.hisoryKeeper?.save(object: &editResult)
-        } catch {
-          assertionFailure()
-          print("Result hasn't been saved")
-        }
-        self.cellStates[index] = .show(image: image, filterName: filterName)
-        DispatchQueue.main.async {
-          self.historyTable.reloadData()
-        }
-    }
+    let presenter = HistoryTableCellPresenter()
+    cellPresenters += [presenter]
+    presenter.update(withPromise: image, filterName: filterName)
     
     historyTable.reloadData()
   }
@@ -75,13 +59,17 @@ class HistoryView: XibDesignedView {
 
 extension HistoryView: UITableViewDataSource {
   func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-    return cellStates.count
+    return cellPresenters.count
   }
   
   func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-    let cell = tableView.dequeueReusableCell(withIdentifier: HistoryTableViewCell.xibName, for: indexPath) as? HistoryTableViewCell
-    cell?.set(state: cellStates[cellStates.count - indexPath.row - 1])
-    return cell ?? UITableViewCell()
+    if let cell = tableView.dequeueReusableCell(withIdentifier: HistoryTableViewCell.xibName, for: indexPath) as? HistoryTableViewCell {
+      let presenter = cellPresenters[cellPresenters.count - indexPath.row - 1]
+      cell.presenter = presenter
+      presenter.delegate = self
+      return cell
+    }
+    return UITableViewCell()
   }
 }
 
@@ -89,12 +77,25 @@ extension HistoryView: UITableViewDelegate {
   func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
     tableView.deselectRow(at: indexPath, animated: false)
     
-    let cellState = cellStates[cellStates.count - indexPath.row - 1]
-    switch cellState {
-    case .show(image: let image, filterName: _):
-      self.delegate?.historyView(self, didSelectImage: image)
-    default:
-      break
+    if let cellState = cellPresenters[cellPresenters.count - indexPath.row - 1].state {
+      switch cellState {
+      case .show(image: let image, filterName: _):
+        self.delegate?.historyView(self, didSelectImage: image)
+      default:
+        break
+      }
+    }
+  }
+}
+
+extension HistoryView: HistoryCellPresenterDelegate {
+  func historyCellPresenter(_ cellPresenter: HistoryTableCellPresenter, didCompleteLoadImageWithResult result: EditResult) {
+    var editResult = result
+    do {
+      try self.hisoryKeeper?.save(object: &editResult)
+    } catch {
+      assertionFailure()
+      print("Filter result hasn't been saved")
     }
   }
 }

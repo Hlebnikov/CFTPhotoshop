@@ -30,6 +30,10 @@ class PictureEditorViewController: UIViewController {
 }
 
 extension PictureEditorViewController: PictureEditorPresenterProtocol {
+  func invert() {
+    applyFilter(type: .invert)
+  }
+  
   func getPicture() {
     let alertController = UIAlertController(title: "Image openning", message: nil, preferredStyle: .actionSheet)
     let photoLibraryAction = UIAlertAction(title: "Photo library", style: .default) { [unowned self] _ in

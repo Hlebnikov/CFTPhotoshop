@@ -40,15 +40,15 @@
                         <nil key="textColor"/>
                         <nil key="highlightedColor"/>
                     </label>
-                    <progressView opaque="NO" contentMode="scaleToFill" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="BDX-E0-VmE">
+                    <progressView hidden="YES" opaque="NO" contentMode="scaleToFill" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="BDX-E0-VmE">
                         <rect key="frame" x="8" y="70" width="304" height="2"/>
                         <color key="progressTintColor" red="0.99942404029999998" green="0.87260193249999995" blue="0.072163176479999994" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                     </progressView>
-                    <progressView opaque="NO" contentMode="scaleToFill" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="Lmt-JS-nuM">
+                    <progressView hidden="YES" opaque="NO" contentMode="scaleToFill" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="Lmt-JS-nuM">
                         <rect key="frame" x="8" y="72" width="304" height="2"/>
                         <color key="progressTintColor" red="0.99942404029999998" green="0.87260193249999995" blue="0.072163176479999994" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                     </progressView>
-                    <progressView opaque="NO" contentMode="scaleToFill" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="Bfy-OP-kvA">
+                    <progressView hidden="YES" opaque="NO" contentMode="scaleToFill" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="Bfy-OP-kvA">
                         <rect key="frame" x="8" y="68" width="304" height="2"/>
                         <color key="progressTintColor" red="0.99942404029999998" green="0.87260193249999995" blue="0.072163176479999994" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                     </progressView>

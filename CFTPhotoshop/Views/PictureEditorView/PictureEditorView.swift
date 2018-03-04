@@ -47,6 +47,10 @@ class PictureEditorView: XibDesignedView, PictureEditorViewProtocol {
     presenter?.getPicture()
   }
   
+  @IBAction private func onInvertButton() {
+    presenter?.invert()
+  }
+  
   func setPresenter(_ presenter: PictureEditorPresenterProtocol) {
     self.presenter = presenter
   }

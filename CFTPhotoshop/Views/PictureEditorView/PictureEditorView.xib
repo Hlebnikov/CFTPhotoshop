@@ -57,7 +57,7 @@
                             <rect key="frame" x="217.5" y="0.0" width="217.5" height="130"/>
                             <subviews>
                                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="eDV-gC-t12">
-                                    <rect key="frame" x="0.0" y="0.0" width="217.5" height="43.5"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="217.5" height="32.5"/>
                                     <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                     <state key="normal" title="Rotate"/>
                                     <connections>
@@ -65,7 +65,7 @@
                                     </connections>
                                 </button>
                                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="GLW-4l-Ikv">
-                                    <rect key="frame" x="0.0" y="43.5" width="217.5" height="43"/>
+                                    <rect key="frame" x="0.0" y="32.5" width="217.5" height="32.5"/>
                                     <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                     <state key="normal" title="Desaturate"/>
                                     <connections>
@@ -73,11 +73,18 @@
                                     </connections>
                                 </button>
                                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="nU2-6y-5eP">
-                                    <rect key="frame" x="0.0" y="86.5" width="217.5" height="43.5"/>
+                                    <rect key="frame" x="0.0" y="65" width="217.5" height="32.5"/>
                                     <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                     <state key="normal" title="Reflect"/>
                                     <connections>
                                         <action selector="onReflect:" destination="-1" eventType="touchUpInside" id="CwM-Oy-6Hh"/>
+                                    </connections>
+                                </button>
+                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="mkQ-PB-j1A">
+                                    <rect key="frame" x="0.0" y="97.5" width="217.5" height="32.5"/>
+                                    <state key="normal" title="Invert"/>
+                                    <connections>
+                                        <action selector="onInvertButton" destination="-1" eventType="touchUpInside" id="Pkn-fP-TH3"/>
                                     </connections>
                                 </button>
                             </subviews>

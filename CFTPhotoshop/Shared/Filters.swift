@@ -13,23 +13,33 @@ protocol Filter {
   func process(image: UIImage) -> Promise<UIImage>
 }
 
+private func launch(progress: @escaping (Double)->(), action: @escaping ()->Void) {
+  let seconds = arc4random_uniform(25) + 5
+
+  let queue = DispatchQueue(label: "filter", qos: .userInteractive)
+  let ticTime = 0.5
+  let tics = Int(Double(seconds)/ticTime)
+  (1...tics).forEach({ (tic) in
+    queue.asyncAfter(deadline: .now() + Double(tic) * ticTime, execute: {
+      progress((100 - 100/Double(tic)) / 100)
+    })
+  })
+  
+  queue.asyncAfter(deadline: .now() + Double(seconds) + 0.1, execute: {
+    action()
+  })
+}
+
 class RotateFilter: Filter {
   var name: String = "rotate"
   
   func process(image: UIImage) -> Promise<UIImage> {
     return Promise() { progress, result in
-      DispatchQueue.global(qos: .userInteractive).async {
-        
-        (1...98).forEach({ (tic) in
-          DispatchQueue.global().asyncAfter(deadline: .now() + Double(tic) * 0.1, execute: {
-            progress(Float(tic) / 100)
-          })
-        })
-
-        DispatchQueue.global().asyncAfter(deadline: .now() + 10.1, execute: {
-          result(self.rotateImage(image) ?? image)
-        })
-      }
+      launch(progress: { value in
+        progress(Float(value))
+      }, action: {
+        result(self.rotateImage(image) ?? image)
+      })
     }
   }
   
@@ -59,22 +69,13 @@ class DesaturateFilter: Filter {
   
   func process(image: UIImage) -> Promise<UIImage> {
     return Promise() { progress, result in
-      var newimage = image
-      DispatchQueue.global(qos: .userInteractive).async {
-        newimage = self.desaturate(image: image) ?? image
-      }
-      
-      (1...3).forEach({ (tic) in
-        DispatchQueue.global().asyncAfter(deadline: .now() + Double(tic) * 0.2, execute: {
-          progress((100 - 100/Float(tic)) / 100)
-        })
-      })
-      
-      DispatchQueue.global().asyncAfter(deadline: .now() + 0.7, execute: {
+      launch(progress: { (progressTime) in
+        progress(Float(progressTime))
+      }, action: {
+        let newimage = self.desaturate(image: image) ?? image
         progress(1)
-        result(image)
+        result(newimage)
       })
-
     }
   }
   
@@ -97,28 +98,39 @@ class InvertFilter: Filter {
   var name: String = "invert"
   
   func process(image: UIImage) -> Promise<UIImage> {
-    return Promise() { _, result in
-      let ciContext = CIContext(options: nil)
-      let coreImage = CIImage(image: image)
-      let filter = CIFilter(name: "CIColorInvert" )
-      filter!.setDefaults()
-      filter!.setValue(coreImage, forKey: kCIInputImageKey)
-      let filteredImageData = filter!.value(forKey: kCIOutputImageKey) as! CIImage
-      let filteredImageRef = ciContext.createCGImage(filteredImageData, from: filteredImageData.extent)
-      let resultImage = UIImage(cgImage: filteredImageRef!)
-      result(resultImage)
+    return Promise() { progress, result in
+      launch(progress: { value in
+        progress(Float(value))
+      }, action: {
+        result(self.invert(image: image) ?? image)
+      })
     }
   }
+  
+  private func invert(image: UIImage) -> UIImage{
+    let ciContext = CIContext(options: nil)
+    let coreImage = CIImage(image: image)
+    let filter = CIFilter(name: "CIColorInvert" )
+    filter!.setDefaults()
+    filter!.setValue(coreImage, forKey: kCIInputImageKey)
+    let filteredImageData = filter!.value(forKey: kCIOutputImageKey) as! CIImage
+    let filteredImageRef = ciContext.createCGImage(filteredImageData, from: filteredImageData.extent)
+    let resultImage = UIImage(cgImage: filteredImageRef!)
+    return resultImage
+  }
+
 }
 
 class ReflectFilter: Filter {
   var name: String = "reflect"
   
   func process(image: UIImage) -> Promise<UIImage> {
-    return Promise<UIImage> { _, result in
-      DispatchQueue.global(qos: .userInteractive).async {
+    return Promise<UIImage> { progress, result in
+      launch(progress: { value in
+        progress(Float(value))
+      }, action: {
         result(self.reflect(image: image) ?? image)
-      }
+      })
     }
   }
   

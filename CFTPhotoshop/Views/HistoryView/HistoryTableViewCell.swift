@@ -17,6 +17,15 @@ class HistoryTableViewCell: UITableViewCell {
   @IBOutlet private weak var filterNameLabel: UILabel!
   @IBOutlet private weak var filterTitleLabel: UILabel!
   
+  weak var presenter: HistoryTableCellPresenter? {
+    willSet {
+      presenter?.setCell(nil)
+    }
+    didSet {
+      presenter?.setCell(self)
+    }
+  }
+  
   private var loadingProgress: Float = 0.0 {
     didSet {
       progressViews.forEach({ $0.setProgress(loadingProgress, animated: true) })
@@ -35,21 +44,22 @@ class HistoryTableViewCell: UITableViewCell {
   }
   
   func set(state: State) {
-    switch state {
-    case .loading(progress: let progress):
-      progressViews.forEach({ $0.isHidden = false })
-      loadingProgress = progress
-      pictureImageView.isHidden = true
-      filterNameLabel.isHidden = true
-      filterTitleLabel.isHidden = true
-    case .show(image: let image, filterName: let filterName):
-      progressViews.forEach({ $0.isHidden = true })
-      self.pictureImageView.image = image
-      self.filterNameLabel.text = filterName
-      pictureImageView.isHidden = false
-      filterNameLabel.isHidden = false
-      filterTitleLabel.isHidden = false
+    DispatchQueue.main.async {
+      switch state {
+      case .loading(progress: let progress):
+        self.progressViews.forEach({ $0.isHidden = false })
+        self.loadingProgress = progress
+        self.pictureImageView.isHidden = true
+        self.filterNameLabel.isHidden = true
+        self.filterTitleLabel.isHidden = true
+      case .show(image: let image, filterName: let filterName):
+        self.progressViews.forEach({ $0.isHidden = true })
+        self.pictureImageView.image = image
+        self.filterNameLabel.text = filterName
+        self.pictureImageView.isHidden = false
+        self.filterNameLabel.isHidden = false
+        self.filterTitleLabel.isHidden = false
+      }
     }
   }
-
 }

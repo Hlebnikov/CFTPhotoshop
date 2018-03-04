@@ -9,14 +9,21 @@
 import UIKit
 
 enum FilterType: Filter {
+  case desaturate
+  case rotate
+  case reflect
+  case invert
+  
   var name: String {
     switch self {
     case .desaturate:
-      return "desaturate"
+      return "Desaturate"
     case .reflect:
-      return "reflect"
+      return "Reflect"
     case .rotate:
-      return "rotate"
+      return "Rotate"
+    case .invert:
+      return "Invert"
     }
   }
   
@@ -28,12 +35,10 @@ enum FilterType: Filter {
       return DesaturateFilter().process(image: image)
     case .reflect:
       return ReflectFilter().process(image: image)
+    case .invert:
+      return InvertFilter().process(image:image)
     }
   }
-  
-  case desaturate
-  case rotate
-  case reflect
 }
 
 class PictureEditor {

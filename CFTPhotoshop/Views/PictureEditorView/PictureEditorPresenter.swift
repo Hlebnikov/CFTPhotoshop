@@ -13,4 +13,5 @@ protocol PictureEditorPresenterProtocol {
   func desaturate()
   func rotate()
   func reflect()
+  func invert()
 }
